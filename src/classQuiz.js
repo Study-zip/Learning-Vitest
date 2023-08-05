@@ -38,13 +38,99 @@ quizcounter.increment(); // 정답 개수가 1씩 증가되어야 한다.
 
 문제 [2]
 
-사용자의 이름과 나이 정보를 저장하는 클래스 User를 만들어보세요. User 클래스는 다음과 같은 기능을 갖추어야 합니다.
-
-1. 사용자의 이름과 나이를 설정할 수 있어야 합니다. 이때 나이는 0 이상이어야 합니다.
-2. get 키워드를 사용하여 사용자의 이름과 나이를 가져올 수 있어야 합니다.
-3. set 키워드를 사용하여 사용자의 이름과 나이를 변경할 수 있어야 합니다. 나이가 0 미만으로 변경되는 경우, 자동으로 0으로 설정되어야 합니다.
+정직원과 파트타임 직원을 나타낼 수 있는 클래스를 만들어보자.
+직원들의 정보: 이름, 부서이름, 한달 근무 시간
+매달 직원들의 정보를 이용해서 한 달 월급을 계산할 수 있다.
+정직원은 시간당 20,000원
+파트타임 직원은 시간당 9,620원(2023 최저시급)이다.
 */
 
-// const user = new User();
+/*
+혼자 스스로 해본 답안.
 
-export { quizcounter };
+class Worker {
+  #name;
+  #part;
+  #time;
+  constructor(name, part, time) {
+    this.#name = name;
+    this.#part = part;
+    this.#time = time;
+  }
+  get name() {
+    return this.#name;
+  }
+  get part() {
+    return this.#part;
+  }
+  get time() {
+    return this.#time;
+  }
+}
+
+class publicWorker extends Worker {
+  Salary = () => {
+    console.log(
+      `이번 달 ${this.part}부서 ${this.name}님의 월급은 ${(
+        this.time * 20000
+      ).toLocaleString()}원 입니다.`
+    );
+  };
+}
+
+class partWorker extends Worker {
+  Salary = () => {
+    console.log(
+      `이번 달 ${this.part}부서의 ${this.name}님의 월급은 ${(
+        this.time * 9620
+      ).toLocaleString()}원 입니다.`
+    );
+  };
+}
+
+const worker = new publicWorker("Nami", "IT", 300);
+const worker1 = new partWorker("Olive", "Design", 100);
+console.log(worker.name); // nami
+console.log(worker.part); // online
+console.log(worker.time); // 300
+worker.Salary(); // 6,000,000원
+console.log(worker1.name); // olive
+console.log(worker1.part); // design
+console.log(worker1.time); // 100
+worker1.Salary(); // 962,000원
+
+*/
+
+class Worker {
+  constructor(name, part, time, payRate) {
+    this.name = name;
+    this.part = part;
+    this.time = time;
+    this.payRate = payRate;
+  }
+  Salary = () => {
+    const salary = (this.time * this.payRate).toLocaleString();
+    console.log(
+      `이번 달 ${this.part}부서 ${this.name}님의 월급은 ${salary}원 입니다.`
+    );
+  };
+}
+
+class PublicWorker extends Worker {
+  static PAY_RATE = 20000;
+  constructor(name, part, time) {
+    super(name, part, time, PublicWorker.PAY_RATE);
+  }
+}
+
+class PartWorker extends Worker {
+  static PAY_RATE = 9620;
+  constructor(name, part, time) {
+    super(name, part, time, PartWorker.PAY_RATE);
+  }
+}
+
+const worker = new PublicWorker("Nami", "IT", 300);
+const worker1 = new PartWorker("Olive", "Design", 100);
+
+export { quizcounter, worker, worker1 };
