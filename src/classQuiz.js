@@ -109,7 +109,7 @@ class Worker {
     this.payRate = payRate;
   }
   Salary = () => {
-    const salary = (this.time * this.payRate).toLocaleString();
+    const salary = this.time * this.payRate;
     return salary;
   };
 }
@@ -131,14 +131,14 @@ class PartWorker extends Worker {
 const worker = new PublicWorker("Nami", "IT", 300);
 const worker1 = new PartWorker("Olive", "Design", 100);
 console.log(
-  `이번 달 ${worker.part}부서 ${
-    worker.name
-  }님의 월급은 ${worker.Salary()}원 입니다.`
+  `이번 달 ${worker.part}부서 ${worker.name}님의 월급은 ${worker
+    .Salary()
+    .toLocaleString()}원 입니다.`
 );
 console.log(
-  `이번 달 ${worker1.part}부서 ${
-    worker1.name
-  }님의 월급은 ${worker1.Salary()}원 입니다.`
+  `이번 달 ${worker1.part}부서 ${worker1.name}님의 월급은 ${worker1
+    .Salary()
+    .toLocaleString()}원 입니다.`
 );
 
 export { quizcounter, worker, worker1 };
