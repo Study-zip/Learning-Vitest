@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { text, printedCharacters, ids } from "../built-inQuiz0";
+import { text, printedCharacters, ids } from "../built-in/built-inQuiz0";
 
 test("문자열의 모든 캐릭터를 하나씩 출력하라", () => {
   expect(printedCharacters.join("")).toBe(text);
