@@ -15,3 +15,12 @@ test("The removeFromCart function can remove an item from the cart", () => {
 
   expect(cart.items).toStrictEqual([]);
 });
+
+test("The clearCart function can clear all items from the cart", () => {
+  const cart = new Cart();
+  cart.addToCart("cheesecake");
+  cart.addToCart("macaron");
+  cart.clearCart();
+
+  expect(cart.items).toStrictEqual([]);
+});

@@ -13,6 +13,9 @@ class Cart {
       }
     }
   }
+  clearCart() {
+    this.items.length = 0;
+  }
 }
 
 export { Cart };
