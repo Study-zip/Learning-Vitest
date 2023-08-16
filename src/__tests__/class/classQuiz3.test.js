@@ -1,5 +1,5 @@
 import { test, expect } from "vitest";
-import { myAccount } from "../class/classQuiz3";
+import { myAccount } from "../../class/classQuiz3";
 
 test("문제 [3] 은행 계좌 입출금하기 테스트", () => {
   expect(myAccount.getBalance()).toBe("현재 잔액은 53,709,000 입니다.");

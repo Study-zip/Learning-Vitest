@@ -1,5 +1,5 @@
 import { test, it, expect } from "vitest";
-import { worker, worker1 } from "../class/classQuiz2";
+import { worker, worker1 } from "../../class/classQuiz2";
 
 test("문제 [2] 한 달 월급을 계산하는 Class 테스트", () => {
   it("정직원 월급 계산하기", () => {
