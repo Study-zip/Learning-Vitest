@@ -4,14 +4,14 @@
 // input: [ '🍌', '🥝', '🍇', '🥝' ], '🥝'
 // output: 2
 
-const howMany = ["🍌", "🥝", "🍇", "🥝"];
-let total = 0;
-for (let i = 0; i < howMany.length; i++) {
-  if (howMany[i] === "🥝") {
-    total++;
-  } else {
-    continue;
+function count(array, item) {
+  let total = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === item) {
+      total++;
+    }
   }
+  return total;
 }
 
-export { total };
+export { count };
