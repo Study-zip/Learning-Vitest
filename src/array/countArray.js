@@ -5,13 +5,8 @@
 // output: 2
 
 function count(array, item) {
-  let total = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] === item) {
-      total++;
-    }
-  }
-  return total;
+  const filtered = array.filter((element) => element === item);
+  return filtered.length;
 }
 
 export { count };

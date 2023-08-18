@@ -4,13 +4,7 @@
 // output: [ '🍌', '🥝', '🍇', '🥝' ]
 
 function replace(array, from, to) {
-  const replaced = Array.from(array);
-  for (let i = 0; i < replaced.length; i++) {
-    if (replaced[i] === from) {
-      replaced[i] = to;
-    }
-  }
-  return replaced;
+  return array.map((item) => (item === from ? to : item));
 }
 
 export { replace };
